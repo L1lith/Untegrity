@@ -6,7 +6,6 @@ const checkIntegrity = require('../checkIntegrity')
 const {unlink} = require('mz/fs')
 const colors = require('colors')
 
-console.log(args)
 async function run() {
   if (args._.length > 1) throw 'Too many arguments'
   let path = args._[0] || args.path || args.p
