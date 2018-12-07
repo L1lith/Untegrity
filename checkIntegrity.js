@@ -9,7 +9,7 @@ const logsDirectory = join(__dirname, 'logs')
 let firstLaunch = true
 
 async function checkIntegrity(videoPath, options) {
-  const {audioMode=false} = options || {}
+  const {audioMode=false, returnErrors=false} = options || {}
     if (firstLaunch) {
       await mkdirpAsync(logsDirectory)
       firstLaunch = false
@@ -24,6 +24,9 @@ async function checkIntegrity(videoPath, options) {
     const errors = (await readFile(errorLogPath)).toString().split('\n').filter(line => line.trim().length > 0)
     const valid = errors.length === 0
     await unlink(errorLogPath)
+    if (returnErrors === true) {
+      return errors
+    }
     return valid
 }
 
