@@ -48,10 +48,9 @@ untegrity videoPath [-t type | -type] [-r | -recursive] [-rm | -del | -remove | 
 ```
 | Flag | Description                                                             |
 |------|-------------------------------------------------------------------------|
-| -r   | If doing a folder search check subdirectories recursively               |
-| -t   | Specify either a video or folder path type to prevent unwanted behavior |
-| -rm  | Delete corrupt videos found.                                            |
-| -o   | Output results to a JSON formatted file                                 |
+| --r  | If doing a folder search check subdirectories recursively               |
+| --t  | Specify either a video or folder path type to prevent unwanted behavior |
+| --rm | Delete corrupt videos found.                                            |
 
 ## Node.js Methods
 ### checkIntegrity
@@ -59,7 +58,12 @@ Checks the integrity of a single video
 
 Usage
 ```
-videoPathString
+const {checkIntegrity} = require('untegrity')
+const {join} = require('path')
+
+checkIntegrity(join(__dirname, './movie.mp4')).then(valid => {
+	console.log("Video Valid")
+}).catch(console.log)
 ```
 
 #### This Readme is a Work in Progress.
