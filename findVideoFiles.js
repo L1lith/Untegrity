@@ -7,11 +7,14 @@ const {join} = require('path')
 async function findVideoFiles(directory, recursive=false) {
   let files = await readdir(directory)
   files = await Promise.all(files.map(async file => {
+    file = join(directory, file)
     if (await pathType.dir(file)) {
       if (recursive === false) return []
-      return findVideoFiles(join(directory, file))
+      return findVideoFiles(file)
     } else if (await pathType.file(file)) {
-      return [join(directory, file)]
+      return [file]
+    } else {
+      return []
     }
   }))
   files = [].concat.apply([], files)
