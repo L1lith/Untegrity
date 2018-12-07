@@ -16,7 +16,7 @@ async function checkIntegrity(videoPath, options) {
     }
     const errorLogPath = join(logsDirectory, nanoid() + '.log')
     await new Promise((resolve, reject) => {
-      exec(`ffmpeg -v error -i "${videoPath}"${audioMode === true ? ' -map 0:1' : ''} -f null - >${errorLogPath} 2>&1`, ((err, stdout, stderr) => {
+      exec(`ffmpeg -v error -i "${videoPath}"${audioMode === true ? ' -map 0:1' : ''} -f null - >"${errorLogPath}" 2>&1`, ((err, stdout, stderr) => {
         if (err) return reject(err)
         resolve()
       }))
