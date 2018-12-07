@@ -6,6 +6,10 @@ const {readFile, unlink} = require('mz/fs')
 
 const logsDirectory = join(__dirname, 'logs')
 
+try { // Remove Leftover Logs from early termination just to prevent wasted hard drive space
+  require('rimraf')(logsDirectory)
+} catch(error) {}
+
 let firstLaunch = true
 
 async function checkIntegrity(videoPath, options) {
