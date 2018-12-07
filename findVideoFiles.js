@@ -10,7 +10,7 @@ async function findVideoFiles(directory, recursive=false) {
     file = join(directory, file)
     if (await pathType.dir(file)) {
       if (recursive === false) return []
-      return findVideoFiles(file)
+      return findVideoFiles(file, recursive)
     } else if (await pathType.file(file)) {
       return [file]
     } else {
