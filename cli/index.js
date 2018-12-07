@@ -5,6 +5,7 @@ const findVideoFiles = require('../findVideoFiles')
 const checkIntegrity = require('../checkIntegrity')
 const {unlink} = require('mz/fs')
 const colors = require('colors')
+const banner = require('./banner')
 
 async function run() {
   if (args._.length > 1) throw 'Too many arguments'
@@ -20,6 +21,8 @@ async function run() {
   const remove = false || args.remove || args.delete || args.rm || args.del
   if (remove !== null && ['rm', 'remove', 'del', 'delete'].some(property => args.hasOwnProperty(property)) && typeof remove != 'boolean') throw "The remove argument must be a boolean"
   path = resolvePath(path, process.cwd())
+
+  console.log(banner)
 
   if (await pathType.file(path)) {
     if (type === 'folder') throw 'The supplied path is a file not a folder'
