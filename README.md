@@ -4,7 +4,7 @@ Discipline videos with poor integrity
 ## Installation
 First install FFMPEG ([Found Here](http://ffmpeg.zeranoe.com/builds/)) and ensure it's path is set in your environment variables. You can test this by simply running  the command `ffmpeg`
 
-For usage from within Node.js
+For usage from within a Node.js project
 ```
 npm i -s untegrity
 ```
@@ -14,7 +14,7 @@ npm i -g untegrity
 ```
 
 ## Command Line Basics
-The basic usage looks like this.
+Commands are formatted like this
 ```
 untegrity method path ...otherMethodArguments [...options]
 ```
@@ -40,4 +40,25 @@ async function run() {
 
 run().catch(console.log)
 ```
+## Command Line Methods
+#### valid
+Checks the integrity of a video or folder
+
+*Usage*
+```
+untegrity valid videoPath [-t type] [-r | -recursive]
+```
+| Flag | Description                                                             |
+|------|-------------------------------------------------------------------------|
+| -r   | If doing a folder search check subdirectories recursively               |
+| -t   | Specify either a video or folder path type to prevent unwanted behavior |
+## Node.js Methods
+#### checkIntegrity
+Checks the integrity of a single video
+
+Usage
+```
+videoPathString
+```
+
 #### This Readme is a Work in Progess.
