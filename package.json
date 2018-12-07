@@ -1,7 +1,7 @@
 {
   "name": "untegrity",
   "version": "1.0.0",
-  "description": "A utility for checking video integrity",
+  "description": "Discipline videos with poor integrity",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
