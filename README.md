@@ -44,7 +44,7 @@ run().catch(console.log)
 
 *Usage*
 ```
-untegrity videoPath [-t type | -type] [-r | -recursive] [-rm | -del | -remove | -delete] [-o path | -output]
+untegrity videoPath [-t type | -type] [-r | -recursive] [-rm | -del | -remove | -delete]
 ```
 | Flag | Description                                                             |
 |------|-------------------------------------------------------------------------|
@@ -65,5 +65,3 @@ checkIntegrity(join(__dirname, './movie.mp4')).then(valid => {
 	console.log("Video Valid")
 }).catch(console.log)
 ```
-
-#### This Readme is a Work in Progress.
