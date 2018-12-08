@@ -1,6 +1,6 @@
 {
   "name": "untegrity",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Discipline videos with poor integrity",
   "main": "index.js",
   "scripts": {

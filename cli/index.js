@@ -12,6 +12,8 @@ async function run() {
   let path = args._[0] || args.path || args.p
 
   if (typeof path != 'string' || path.length < 1) throw "Must supply path string"
+  let audioMode = args.audioMode || args.audio || args.a
+  if (audioMode !== null && ['a', 'audio', 'audioMode'].some(property => args.hasOwnProperty(property)) && typeof audioMode != 'boolean') throw "The audio mode argument must be true/false"
   let type = args.type || args.t
   if (['dir', 'directory'].includes(type)) type = 'folder'
   if (type !== null && (args.hasOwnProperty('t') || args.hasOwnProperty('type')) && !["file", "folder"].includes(type)) throw "The type argument must be file or folder"
@@ -27,6 +29,16 @@ async function run() {
   if (await pathType.file(path)) {
     if (type === 'folder') throw 'The supplied path is a file not a folder'
     console.log("Checking Video File")
+    const errors = await checkIntegrity(path, {returnErrors: true, audioMode})
+    if (errors.length < 1) {
+      console.log("No errors found".green)
+    } else {
+      console.log("== ".red+errors.length + " errors found".red)
+      if (remove === true) {
+        console.log("Deleting Video File")
+        await unlink(videoFile)
+      }
+    }
   } else if (await pathType.dir(path)) {
     if (type === 'file') throw 'The supplied path is a folder not a file'
     console.log("Beginning Directory Scan")
@@ -36,7 +48,7 @@ async function run() {
     for (let i = 0; i < videoFiles.length; i++) {
       const videoFile = videoFiles[i]
       console.log(`Scanning video file #${i + 1} at ${videoFile}`.cyan)
-      const errors = await checkIntegrity(videoFile, {returnErrors: true})
+      const errors = await checkIntegrity(videoFile, {returnErrors: true, audioMode})
       if (errors.length < 1) {
         console.log("No errors found".green)
       } else {
