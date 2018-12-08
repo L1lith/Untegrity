@@ -48,13 +48,14 @@ run().catch(console.log)
 
 *Usage*
 ```
-untegrity videoPath [-t type | -type] [-r | -recursive] [-rm | -del | -remove | -delete | -d]
+untegrity videoPath [-t --type | --type] [-r | --recursive] [--rm | --del | --remove | --delete | -] [-a | --audio | --audioMode]
 ```
-| Flag | Description                                                             |
-|------|-------------------------------------------------------------------------|
-| --r  | If doing a folder search check subdirectories recursively               |
-| --t  | Specify either a video or folder path type to prevent unwanted behavior |
-| --rm | Delete corrupt videos found.                                            |
+| Flag | Description                                                                         |
+|------|-------------------------------------------------------------------------------------|
+| -r   | If doing a folder search check subdirectories recursively                           |
+| -t   | Specify either a video or folder path type to prevent unwanted behavior             |
+| -d   | Delete corrupt videos found.                                                        |
+| -a   | Run in Audio Mode (Videos validated via audio tracks, less accurate but much faster)|
 
 ## Node.js Methods
 ### checkIntegrity

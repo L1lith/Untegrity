@@ -25,20 +25,12 @@ async function run() {
   path = resolvePath(path, process.cwd())
 
   console.log(banner)
+  if (audioMode === true) console.log(colors.cyan("Running in Audio Mode"))
 
   if (await pathType.file(path)) {
     if (type === 'folder') throw 'The supplied path is a file not a folder'
     console.log("Checking Video File")
-    const errors = await checkIntegrity(path, {returnErrors: true, audioMode})
-    if (errors.length < 1) {
-      console.log("No errors found".green)
-    } else {
-      console.log("== ".red+errors.length + " errors found".red)
-      if (remove === true) {
-        console.log("Deleting Video File")
-        await unlink(videoFile)
-      }
-    }
+    await checkVideoFile(path, {audioMode, remove})
   } else if (await pathType.dir(path)) {
     if (type === 'file') throw 'The supplied path is a folder not a file'
     console.log("Beginning Directory Scan")
@@ -48,19 +40,23 @@ async function run() {
     for (let i = 0; i < videoFiles.length; i++) {
       const videoFile = videoFiles[i]
       console.log(`Scanning video file #${i + 1} at ${videoFile}`.cyan)
-      const errors = await checkIntegrity(videoFile, {returnErrors: true, audioMode})
-      if (errors.length < 1) {
-        console.log("No errors found".green)
-      } else {
-        console.log("== ".red+errors.length + " errors found".red)
-        if (remove === true) {
-          console.log("Deleting Video File")
-          await unlink(videoFile)
-        }
-      }
+      await checkVideoFile(videoFile, {audioMode, remove})
     }
   } else {
     throw "Path not Found."
+  }
+}
+
+async function checkVideoFile(path, {audioMode, remove}) {
+  const errors = await checkIntegrity(path, {returnErrors: true, audioMode})
+  if (errors.length < 1) {
+    console.log("No errors found".green)
+  } else {
+    console.log("== ".red+errors.length + " errors found".red)
+    if (remove === true) {
+      console.log("Deleting Video File")
+      await unlink(videoFile)
+    }
   }
 }
 
