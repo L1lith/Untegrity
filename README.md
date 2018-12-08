@@ -22,6 +22,10 @@ We can check the integrity of a given video file like this, also it can accept f
 ```
 untegrity ./video.mp4
 ```
+Here's an example of recursively searching through directories and deleting the corrupt video files
+```
+untegrity . -drt
+```
 
 ## Node.js Basics
 We can check the integrity of a video like this
@@ -44,7 +48,7 @@ run().catch(console.log)
 
 *Usage*
 ```
-untegrity videoPath [-t type | -type] [-r | -recursive] [-rm | -del | -remove | -delete]
+untegrity videoPath [-t type | -type] [-r | -recursive] [-rm | -del | -remove | -delete | -d]
 ```
 | Flag | Description                                                             |
 |------|-------------------------------------------------------------------------|

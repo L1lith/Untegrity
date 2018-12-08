@@ -18,7 +18,7 @@ async function run() {
   const recursive = args.recursive || args.r
   if (recursive !== null && (args.hasOwnProperty('r') || args.hasOwnProperty('recursive')) && typeof recursive != 'boolean') throw "The recursive argument must be a boolean"
   if (type === 'file' && recursive === true) throw "Cannot run recursively while in file mode"
-  const remove = false || args.remove || args.delete || args.rm || args.del
+  const remove = false || args.remove || args.delete || args.rm || args.del || args.d
   if (remove !== null && ['rm', 'remove', 'del', 'delete'].some(property => args.hasOwnProperty(property)) && typeof remove != 'boolean') throw "The remove argument must be a boolean"
   path = resolvePath(path, process.cwd())
 
