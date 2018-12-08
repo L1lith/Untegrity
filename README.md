@@ -24,7 +24,7 @@ untegrity ./video.mp4
 ```
 Here's an example of recursively searching through directories and deleting the corrupt video files
 ```
-untegrity . -drt
+untegrity . -dr
 ```
 
 ## Node.js Basics
