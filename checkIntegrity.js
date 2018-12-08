@@ -22,6 +22,8 @@ async function checkIntegrity(videoPath, options) {
     await new Promise((resolve, reject) => {
       exec(`ffmpeg -v error -i "${videoPath}"${audioMode === true ? ' -map 0:1' : ''} -f null - >"${errorLogPath}" 2>&1`, ((err, stdout, stderr) => {
         if (err) return reject(err)
+        if (stderr) console.log(stderr)
+        //if (stdout) console.log('stdout')
         resolve()
       }))
     })
