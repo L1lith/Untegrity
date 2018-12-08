@@ -62,6 +62,10 @@ const {checkIntegrity} = require('untegrity')
 const {join} = require('path')
 
 checkIntegrity(join(__dirname, './movie.mp4')).then(valid => {
-	console.log("Video Valid")
+	if (valid) {
+		console.log("Video Valid")
+	} else {
+		console.log("Video Invalid")
+	}
 }).catch(console.log)
 ```
