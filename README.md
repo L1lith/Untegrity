@@ -52,10 +52,10 @@ untegrity videoPath [-t --type | --type] [-r | --recursive] [-d | --rm | --del |
 ```
 | Flag | Description                                                                                  |
 |------|----------------------------------------------------------------------------------------------|
-| -r   | If doing a folder search check subdirectories recursively                                    |
-| -t   | Specify either a video or folder path type to prevent unwanted behavior                      |
-| -d   | Delete corrupt videos found.                                                                 |
-| -a   | Run in Audio Mode (Videos validated via audio tracks, potentially inaccurate but much faster)|
+|  -r  | If doing a folder search check subdirectories recursively                                    |
+|  -t  | Specify either a video or folder path type to prevent unwanted behavior                      |
+|  -d  | Delete corrupt videos found.                                                                 |
+|  -a  | Run in Audio Mode (Videos validated via audio tracks, potentially inaccurate but much faster)|
 | --noBanner | If you don't love beautiful ascii art ;(                                               |
 
 ## Node.js Methods
