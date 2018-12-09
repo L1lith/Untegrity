@@ -22,9 +22,9 @@ We can check the integrity of a given video file like this, also it can accept f
 ```
 untegrity ./video.mp4
 ```
-Here's an example of recursively searching through directories and deleting the corrupt video files
+Here's an example of recursively searching through directories and deleting the corrupt video files using audio content validation
 ```
-untegrity . -dr
+untegrity . -dra
 ```
 
 ## Node.js Basics
