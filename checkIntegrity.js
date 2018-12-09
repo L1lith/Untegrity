@@ -46,6 +46,7 @@ function runFFMPEGCheck(videoPath, options) {
         readFile(errorLogPath).then(errorBuffer => {
           const errors = errorBuffer.toString().split('\n').filter(line => line.trim().length > 0)
           unlink(errorLogPath).then(()=>{
+            console.log(errors.join('\n'))
             resolve(errors)
           }).catch(reject)
         }).catch(reject)
