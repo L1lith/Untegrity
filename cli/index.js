@@ -22,9 +22,11 @@ async function run() {
   if (type === 'file' && recursive === true) throw "Cannot run recursively while in file mode"
   const remove = false || args.remove || args.delete || args.rm || args.del || args.d
   if (remove !== null && ['rm', 'remove', 'del', 'delete'].some(property => args.hasOwnProperty(property)) && typeof remove != 'boolean') throw "The remove argument must be a boolean"
+  const noBanner = false || args.noBanner
+  if (args.hasOwnProperty('noBanner') && typeof args.noBanner != 'boolean') throw new Error("noBanner argument must be a boolean")
   path = resolvePath(path, process.cwd())
 
-  console.log(banner)
+  if (noBanner !== true) console.log(banner)
   if (audioMode === true) console.log(colors.cyan("Running in Audio Mode"))
 
   if (await pathType.file(path)) {
