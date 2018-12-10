@@ -57,7 +57,7 @@ async function checkVideoFile(path, {audioMode, remove}) {
     console.log("== ".red+errors.length + " errors found".red)
     if (remove === true) {
       console.log("Deleting Video File")
-      await unlink(videoFile)
+      await unlink(path)
     }
   }
 }
