@@ -1,6 +1,5 @@
 # Untegrity
-Discipline videos with poor integrity
-
+Command line tool & node package for detecting and optionally removing corrupt videos one at a time or in mass.
 ## Installation
 First install FFMPEG ([Found Here](http://ffmpeg.zeranoe.com/builds/)) and ensure it's path is set in your environment variables. You can test this by simply running  the command `ffmpeg`
 
